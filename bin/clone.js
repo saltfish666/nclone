@@ -1,8 +1,12 @@
 #!/usr/bin/env node
 const path = require('path')
 const argv = require('yargs').argv
-const github = require('octonode')
+if (argv.help) {
+    fs.createReadStream(path.join(__dirname, 'usage.txt')).pipe(process.stdout);
+    return
+}
 
+const github = require('octonode')
 const downloadDir = require('../lib/downloadDir')
 
 let token = argv['t'] || argv['token'] || '7ca7fb6bc74aff0c00c7fee0793c425d143cf1c2'
