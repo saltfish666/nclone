@@ -1,4 +1,4 @@
-# Ensure-path
+# nclone
 ![npm](https://img.shields.io/npm/dm/nclone.svg)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
@@ -14,7 +14,9 @@ This cli can copy a github project's dir-tree and file.
 
 ```
 $ npm i nclone -g
-$ nclone [repo] [targetDir] [-t=YOU_ACCESS_TOKEN] [-d=10] [-f=1]
+
+//$ nclone [repo] [targetDir] [-t=YOU_ACCESS_TOKEN] [-d=10] [-f=1]
+$ nclone saltfish666/nclone ./nclone
 ```
 `repo` is a github repo ,must format as USER/REPO such as  saltfish666/nclone
 
@@ -31,6 +33,8 @@ $ nclone [repo] [targetDir] [-t=YOU_ACCESS_TOKEN] [-d=10] [-f=1]
 ## next-release
 - should not rewirte file if it already exist
 - use git-clone if access_token does not exist
+- should memory repo setting history
+- should store token
 
 ## history
 null
