@@ -33,6 +33,8 @@ $ nclone saltfish666/nclone ./nclone
 ## next-release
 - should not rewirte file if it already exist
 - use git-clone if access_token does not exist
+- should memory repo setting history
+- should store token
 
 ## history
 null
