@@ -3,9 +3,13 @@ const fs = require('fs')
 const path = require('path')
 const argv = require('yargs').argv
 
-if (argv['h'] || argv['help']) {
+if (argv['_'].length === 0 || argv['h'] || argv['help']) {
     fs.createReadStream(path.join(__dirname, 'usage.txt')).pipe(process.stdout);
     return null
+}
+
+if (argv['v']) {
+	return console.log(require('../package.json').version)
 }
 
 const github = require('octonode')
