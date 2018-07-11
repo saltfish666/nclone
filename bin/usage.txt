@@ -1,0 +1,9 @@
+first arg:     the repo that you want to clone
+               it should format as github repo url or [userName]/[repoName]
+second arg:    dir where you want to save
+
+-t (--token)   GitHub Access_Token
+-d             dirDepth that you want to clone
+-f             fileDepth
+-v             vision
+-h             usage
