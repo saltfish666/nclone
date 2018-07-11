@@ -3,13 +3,13 @@ const fs = require('fs')
 const path = require('path')
 const argv = require('yargs').argv
 
+if (argv['v']) {
+  return console.log(require('../package.json').version)
+}
+
 if (argv['_'].length === 0 || argv['h'] || argv['help']) {
     fs.createReadStream(path.join(__dirname, 'usage.txt')).pipe(process.stdout);
     return null
-}
-
-if (argv['v']) {
-	return console.log(require('../package.json').version)
 }
 
 const github = require('octonode')
@@ -25,6 +25,9 @@ const client = github.client(token)
 let dirDepth = argv['d'] || 10
 let fileDepth = argv['f'] || 1
 
-let url = 'https://api.github.com/repos/' + argv['_'][0] + '/contents'
-let dirLocation = path.normalize(argv['_'][1] || '.')
-//downloadDir(client, dirLocation, url, dirDepth, fileDepth)
+let repo = require('../lib/getRepo.js')(argv['_'][0])
+
+let url = 'https://api.github.com/repos/' + repo + '/contents'
+let repoName = repo.split("/")[1]
+let dirLocation = path.normalize(argv['_'][1] || `./${repoName}`)
+downloadDir(client, dirLocation, url, dirDepth, fileDepth)
