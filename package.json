@@ -1,6 +1,6 @@
 {
   "name": "nclone",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "bin": {
     "nclone": "./bin/clone.js"
   },

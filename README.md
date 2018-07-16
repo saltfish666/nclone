@@ -1,4 +1,6 @@
 # nclone
+[![Build Status](https://travis-ci.org/saltfish666/nclone.svg?branch=master)](https://travis-ci.org/saltfish666/nclone)
+[![codecov](https://codecov.io/gh/saltfish666/nclone/branch/master/graph/badge.svg)](https://codecov.io/gh/saltfish666/nclone)
 ![npm](https://img.shields.io/npm/dm/nclone.svg)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
@@ -21,19 +23,24 @@ $ npm i nclone -g
 //$ nclone [repo] [targetDir] [-t=YOU_ACCESS_TOKEN] [-d=10] [-f=1]
 $ nclone saltfish666/nclone ./nclone
 ```
-`repo` is a github repo ,must format as USER/REPO such as  `saltfish666/nclone`
-or `https://github.com/saltfish666/nclone`
+`repo` is a github repo ,must format as USER/REPO such as
 
-`targetDir` is where you want to save files default as `./${repoName}`.
+- `saltfish666/nclone`
+- `https://github.com/saltfish666/nclone`
+- `https://github.com/saltfish666/nclone/blob/master/bin/clone.js`
+- `https://github.com/saltfish666/nclone/tree/master/bin`
+
+`targetDir` is where you want to save files default as `./nclone`.
 
 **warnning: it will rewirte file if file already exists before version 0.0.2**
+
 it will not rewirte file since v0.0.3 or later.
 
-`-t` should be you access token to touch api.github.com
+- `-t` should be you access token to touch api.github.com
 
-`-d` is dir depth that you want to copy defalut as 10
+- `-d` is dir depth that you want to copy defalut as 10
 
-`-f` is file depth that you want to copy defalut as 1
+- `-f` is file depth that you want to copy defalut as 1
 
 ## next-release
 - use git-clone if access_token does not exist
