@@ -9,26 +9,28 @@ if (argv['v']) {
 }
 
 if (argv['_'].length === 0 || argv['h'] || argv['help']) {
-  fs.createReadStream(path.join(__dirname, 'usage.txt')).pipe(process.stdout)
+  // fs.createReadStream(path.join(__dirname, 'usage.txt')).pipe(process.stdout)
+  let data = fs.readFileSync(path.join(__dirname, 'usage.txt'), 'utf8')
+  console.log(data)
   process.exit(0)
 }
 
 const github = require('octonode')
-const downloadDir = require('../lib/downloadDir')
 
 let token = argv['t'] || argv['token']
 if (!token) {
   console.log('unauthorization user limte to github api 60/pre_hour')
-  token = 'be7f6099cba4524c4208d99e89f75a719346dd3b'
 }
 const client = github.client(token)
 
 let dirDepth = argv['d'] || 10
 let fileDepth = argv['f'] || 1
 
-let repo = require('../lib/getRepo.js')(argv['_'][0])
+let url = require('../lib/getDownloadUrl.js')(argv['_'][0])
+let Location = path.normalize(argv['_'][1] || './nclone')
 
-let url = 'https://api.github.com/repos/' + repo + '/contents'
-let repoName = repo.split('/')[1]
-let dirLocation = path.normalize(argv['_'][1] || `./${repoName}`)
-downloadDir(client, dirLocation, url, dirDepth, fileDepth)
+if (/.*[a-zA-Z0-9]+\/[a-zA-Z0-9]+\/blob\/.*/.test(url)) {
+  require('../lib/downloadFile')(Location, url)
+} else {
+  require('../lib/downloadDir')(client, Location, url, dirDepth, fileDepth)
+}
