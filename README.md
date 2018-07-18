@@ -19,6 +19,7 @@ This cli can copy a github project's dir-tree and file.
 
 You can set dir-tree or file-tree's depth.
 
+![](./logo/nclone.gif)
 
 ## How to use?
 
